@@ -10,10 +10,10 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
 
   ClientBloc() : super(ClientInitialState()) {
     on<LoadClientEvent>(
-      (event, emit) {
+      (event, emit) async {
         emit(ClientLoadingState());
         try {
-          List<ClientModel> clients = clientRepo.loadClients();
+          List<ClientModel> clients = await clientRepo.loadClients();
           emit(ClientSucessState(clients: clients));
         } catch (e) {
           emit(ClientErrorState(message: e.toString()));
@@ -22,11 +22,11 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
     );
 
     on<AddClientEvent>(
-      (event, emit) {
+      (event, emit) async {
         emit(ClientLoadingState());
         try {
           clientRepo.addClient(event.client);
-          List<ClientModel> clients = clientRepo.loadClients();
+          List<ClientModel> clients = await clientRepo.loadClients();
           emit(ClientSucessState(clients: clients));
         } catch (e) {
           emit(ClientErrorState(message: e.toString()));
@@ -35,11 +35,11 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
     );
 
     on<RemoveClientEvent>(
-      (event, emit) {
+      (event, emit) async {
         emit(ClientLoadingState());
         try {
           clientRepo.removeClient(event.client);
-          List<ClientModel> clients = clientRepo.loadClients();
+          List<ClientModel> clients = await clientRepo.loadClients();
           emit(ClientSucessState(clients: clients));
         } catch (e) {
           emit(ClientErrorState(message: e.toString()));

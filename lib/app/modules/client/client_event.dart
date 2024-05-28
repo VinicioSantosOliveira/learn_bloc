@@ -1,6 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:learn_bloc/app/models/client_model.dart';
 
-abstract class ClientEvent {}
+abstract class ClientEvent extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
 
 class LoadClientEvent extends ClientEvent {}
 

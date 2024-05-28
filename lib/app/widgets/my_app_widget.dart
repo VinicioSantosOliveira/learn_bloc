@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_bloc/app/pages/client_form_page.dart';
 import 'package:learn_bloc/app/pages/home_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,7 +13,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      routes: {
+        '/':(context) => const HomePage(),
+        '/clientForm':(context) => ClientFormPage(),
+      },
     );
   }
 }
