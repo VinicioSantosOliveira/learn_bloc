@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:learn_bloc/app/models/client_model.dart';
+
+import '../../models/client_model.dart';
 
 abstract class ClientEvent extends Equatable {
   @override

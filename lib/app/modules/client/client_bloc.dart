@@ -9,6 +9,7 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
   final ClientRepository clientRepo = ClientRepository();
 
   ClientBloc() : super(ClientInitialState()) {
+    
     on<LoadClientEvent>(
       (event, emit) async {
         emit(ClientLoadingState());

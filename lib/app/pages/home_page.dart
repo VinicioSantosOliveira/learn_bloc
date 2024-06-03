@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learn_bloc/app/models/client_model.dart';
-import 'package:learn_bloc/app/modules/client/client_state.dart';
 
+import '../models/client_model.dart';
 import '../modules/client/client_bloc.dart';
 import '../modules/client/client_event.dart';
+import '../modules/client/client_state.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final clientBloc = ClientBloc()..add(LoadClientEvent());
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  final ClientBloc clientBloc = ClientBloc();
+
+  @override
+  void initState() {
+    clientBloc.add(LoadClientEvent());
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home page'),
