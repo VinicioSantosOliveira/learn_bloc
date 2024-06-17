@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learn_bloc/app/models/client_model.dart';
+import 'package:learn_bloc/app/modules/client/client_event.dart';
 import 'package:learn_bloc/app/modules/client_form/client_form_bloc.dart';
 
+import '../modules/client/client_bloc.dart';
 import '../modules/client_form/client_form_event.dart';
 import '../modules/client_form/client_form_state.dart';
 
@@ -74,7 +76,7 @@ class _ClientFormPageState extends State<ClientFormPage> {
 
                     final client = ClientModel(name: name, email: email);
 
-                    clientFormBloc.add(AddClientFormEvent(clientForm: client));
+                    Navigator.of(context).pop(client);
                   },
                   child: const Text('Salvar'),
                 ),
